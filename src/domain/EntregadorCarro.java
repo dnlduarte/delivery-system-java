@@ -1,4 +1,4 @@
-package entrega;
+package domain;
 
 public class EntregadorCarro {
 }
