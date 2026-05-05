@@ -1,3 +1,11 @@
+# Participantes:
+- Artur Rodrigues Rm: 564309
+- Daniel Duarte Rm: 562508
+- Felippe Nascimento Rm: 562123
+- Matheus Hideki Rm: 564970
+- Kawan Oliveira Rm: 562197
+
+
 # DIAGRAMA
 
 ```mermaid
