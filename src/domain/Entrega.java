@@ -1,57 +1,45 @@
 package domain;
 
 public class Entrega {
-    private Long id;
-    private Remetente remetente;
-    private String status;
+    private int id;
+    private String destino;
+    private StatusEntrega status;
     private Entregador entregador;
+    private Remetente remetente;
     private Destinatario destinatario;
 
-    public Entrega(Long id, Remetente remetente, String status, Entregador entregador, Destinatario destinatario) {
+    public Entrega(int id, String destino, Remetente remetente, Destinatario destinatario) {
         this.id = id;
+        this.destino = destino;
         this.remetente = remetente;
-        this.status = status;
-        this.entregador = entregador;
         this.destinatario = destinatario;
+        this.status = StatusEntrega.PENDENTE;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Remetente getRemetente() {
-        return remetente;
-    }
-
-    public void setRemetente(Remetente remetente) {
-        this.remetente = remetente;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
+    public void atualizarStatus(StatusEntrega status) {
         this.status = status;
     }
 
-    public Entregador getEntregador() {
-        return entregador;
+    public void atualizarStatus(StatusEntrega status, String obs) {
+        this.status = status;
+        System.out.println("Obs: " + obs);
     }
 
-    public void setEntregador(Entregador entregador) {
+    public void atribuirEntregador(Entregador entregador) {
         this.entregador = entregador;
+        entregador.setDisponivel(false);
     }
 
-    public Destinatario getDestinatario() {
-        return destinatario;
-    }
+    public int getId() { return id; }
+    public String getDestino() { return destino; }
+    public StatusEntrega getStatus() { return status; }
+    public Entregador getEntregador() { return entregador; }
+    public Remetente getRemetente() { return remetente; }
+    public Destinatario getDestinatario() { return destinatario; }
 
-    public void setDestinatario(Destinatario destinatario) {
-        this.destinatario = destinatario;
+    @Override
+    public String toString() {
+        return "[" + id + "] Destino: " + destino + " | Status: " + status +
+                " | Entregador: " + (entregador != null ? entregador.getNome() : "Não atribuído");
     }
 }

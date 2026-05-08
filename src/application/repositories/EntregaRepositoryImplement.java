@@ -6,11 +6,11 @@ import infrastructure.persistence.EntregaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class EntregaRepositoryImplement implements EntregaRepository {
 
     private List<Entrega> dados = new ArrayList<>();
+    private List<Entregador> entregadores = new ArrayList<>();
 
     @Override
     public void salvar(Entrega entrega) {
@@ -23,13 +23,23 @@ public class EntregaRepositoryImplement implements EntregaRepository {
     }
 
     @Override
-    public Entrega update(Long id, Entrega novaEntrega){
-        for (int i=0;i<dados.toArray().length;i++){
-            if(dados.get(i).getId() == id){
+    public Entrega update(Long id, Entrega novaEntrega) {
+        for (int i = 0; i < dados.size(); i++) {
+            if (dados.get(i).getId() == id) {
                 dados.set(i, novaEntrega);
                 return novaEntrega;
             }
         }
         return null;
+    }
+
+    @Override
+    public void salvarEntregador(Entregador entregador) {
+        entregadores.add(entregador);
+    }
+
+    @Override
+    public List<Entregador> buscarTodosEntregadores() {
+        return entregadores;
     }
 }
